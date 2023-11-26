@@ -18,7 +18,8 @@ def generate_key():
         second_block = list(n[:3]) + random.choices(ALPHABET, k=2)
         random.shuffle(first_block)
         random.shuffle(second_block)
-        third_block = str(int(''.join((filter(lambda x: x.isdigit(), first_block)))) + int(''.join((filter(lambda x: x.isdigit(), second_block))))).rjust(4, '0')
+        third_block = str(int(''.join((filter(lambda x: x.isdigit(), first_block)))) + int(
+            ''.join((filter(lambda x: x.isdigit(), second_block))))).rjust(4, '0')
         res_arg.configure(text=f"{''.join(first_block)}-{''.join(second_block)} {third_block}")
     else:
         tk.messagebox.showwarning('Ошибка', 'Число не удовлетворяет условиям!')
@@ -50,6 +51,5 @@ btn_calc = tk.Button(frame, text='сгенерировать ключ', command=
 btn_calc.grid(column=0, row=3, padx=10, pady=15)
 btn_exit = tk.Button(frame, text='Cancel', command=close)
 btn_exit.grid(column=2, row=3, padx=10, pady=15)
-
 
 window.mainloop()
